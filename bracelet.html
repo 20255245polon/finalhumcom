@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bracelet Section</title>
+</head>
+<body>
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-home-link">
+                <img src="images/logo.png" alt="Logo">
+                <span class="brand-name">Violet Quartz Co. </span>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+           
+            <li class="dropdown">
+                <a href="collection.html" class="dropbtn">Collections </a>
+
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="ring.html">Rings</a>
+                        </li>
+                        <li>
+                            <a href="necklace.html">Necklaces</a>
+                        </li>
+                        <li>
+                            <a href="earring.html">Earrings</a>
+                        </li>
+                        <li>
+                            <a href="bracelet.html" class="active">Bracelets</a>
+                        </li>
+                        <li>
+                            <a href="vault.html">Vault Special</a>
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                <a href="cart.html" class="cart-link">Cart</a>
+            </li>
+            <li>
+                <a href="about.html">About Us</a>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+
+    </div>
+    </nav>
+
+    <section class="product-section">
+        <h2 class="section-title">Our Bracelets Collection</h2>
+
+        <div class="product-container">
+
+            <!-- PRODUCT 1 -->
+            <div class="product-card">
+                <img src="images/bracelet1.png" class="clickable"
+                    data-name="Cortex Cuff"
+                    data-material="Brushed Sterling Silver, Quartz"
+                    data-price="₱1,500"
+                    data-desc="A wide, textured metal band with an asymmetrical quartz 'vein' running through the center.">
+
+                <h3>Cortex Cuff</h3>
+                <p class="material">Material: Sterling Silver, Quartz</p>
+                <p class="desc">Textured band with quartz vein.</p>
+                <p class="price">₱1,500</p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card">
+                <img src="images/bracelet2.png" class="clickable"
+                    data-name="Lava & Lavender"
+                    data-material="Lava Rock, Amethyst, Elastic"
+                    data-price="₱1,800"
+                    data-desc="Matte black lava stone beads paired with three amethyst accent beads for a grounding aesthetic.">
+
+                <h3>Lava & Lavender</h3>
+                <p class="material">Material: Lava Rock, Amethyst</p>
+                <p class="desc">Grounding lava and amethyst beads.</p>
+                <p class="price">₱1,800</p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- PRODUCT 3 -->
+            <div class="product-card">
+                <img src="images/bracelet3.png" class="clickable"
+                    data-name="The Engineer Link"
+                    data-material="Surgical Steel, Violet Quartz"
+                    data-price="₱1,400"
+                    data-desc="Industrial bolt-style chain featuring a high-precision violet quartz clasp mechanism.">
+
+                <h3>The Engineer Link</h3>
+                <p class="material">Material: Surgical Steel</p>
+                <p class="desc">Industrial link with quartz clasp.</p>
+                <p class="price">₱1,400</p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- PRODUCT 4 -->
+            <div class="product-card">
+                <img src="images/bracelet4.png" class="clickable"
+                    data-name="Tundra Braid"
+                    data-material="Nappa Leather, Gold, Amethyst"
+                    data-price="₱1,900"
+                    data-desc="Premium braided genuine leather finished with a magnetic quartz-encrusted gold closure.">
+
+                <h3>Tundra Braid</h3>
+                <p class="material">Material: Nappa Leather, Gold</p>
+                <p class="desc">Braided leather with magnetic closure.</p>
+                <p class="price">₱1,900</p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- PRODUCT 5 -->
+            <div class="product-card">
+                <img src="images/bracelet5.png" class="clickable"
+                    data-name="Nomad Wrap"
+                    data-material="Paracord, Silver, Raw Quartz"
+                    data-price="₱900"
+                    data-desc="A rugged multi-layer paracord and silver wire wrap featuring natural raw stone spacers.">
+
+                <h3>Nomad Wrap</h3>
+                <p class="material">Material: Paracord, Raw Quartz</p>
+                <p class="desc">Rugged multi-layer cord wrap.</p>
+                <p class="price">₱900</p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- PRODUCT 6 -->
+            <div class="product-card">
+                <img src="images/bracelet6.png" class="clickable"
+                    data-name="Titan Slab"
+                    data-material="Heavy Silver, Slab-cut Amethyst"
+                    data-price="₱1,800"
+                    data-desc="Impressive large, flat-faced violet stones linked together by heavy artisan silver rings.">
+
+                <h3>Titan Slab</h3>
+                <p class="material">Material: Heavy Silver, Amethyst</p>
+                <p class="desc">Large slab-cut violet stones.</p>
+                <p class="price">₱1800</p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+
+        </div>
+    </section>
+
+<!-- MODAL -->
+<div id="productModal" class="modal">
+    <div class="modal-box">
+        <span class="close">&times;</span>
+
+        <img id="modalImg">
+        <h2 id="modalName"></h2>
+        <p id="modalMaterial"></p>
+        <p id="modalDesc"></p>
+        <p id="modalPrice" class="price"></p>
+
+        <button class="buy-btn">Buy Now</button>
+    </div>
+</div>
+
+<script>
+const modal = document.getElementById("productModal");
+const modalImg = document.getElementById("modalImg");
+const modalName = document.getElementById("modalName");
+const modalMaterial = document.getElementById("modalMaterial");
+const modalDesc = document.getElementById("modalDesc");
+const modalPrice = document.getElementById("modalPrice");
+
+document.querySelectorAll(".clickable").forEach(img => {
+    img.addEventListener("click", function() {
+        modal.classList.add("show");
+
+        modalImg.src = this.src;
+        modalName.textContent = this.dataset.name;
+        modalMaterial.textContent = "Material: " + this.dataset.material;
+        modalDesc.textContent = this.dataset.desc;
+        modalPrice.textContent = this.dataset.price;
+    });
+});
+
+document.querySelector(".close").onclick = () => {
+    modal.classList.remove("show");
+};
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.remove("show");
+});
+
+const CART_KEY = 'violet_quartz_cart_v1';
+
+function addToCartFromCard(card) {
+    const img = card.querySelector('img.clickable');
+    if (!img) return;
+
+    const item = {
+        id: img.dataset.name + '|' + img.dataset.price,
+        name: img.dataset.name,
+        material: img.dataset.material || '',
+        price: img.dataset.price,
+        desc: img.dataset.desc || '',
+        image: img.src,
+        qty: 1
+    };
+
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { cart = []; }
+
+    const idx = cart.findIndex(x => x.id === item.id);
+    if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+    else cart.push(item);
+
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function wireBuyBtns() {
+    document.querySelectorAll('.product-card').forEach(card => {
+        const btn = card.querySelector('.buy-btn');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            addToCartFromCard(card);
+            window.location.href = 'cart.html';
+        });
+    });
+}
+
+function wireModalBuy() {
+    const modalBuyBtn = document.querySelector('#productModal .buy-btn');
+    if (!modalBuyBtn) return;
+
+    modalBuyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = modalName.textContent + '|' + modalPrice.textContent;
+        const item = {
+            id,
+            name: modalName.textContent,
+            material: modalMaterial.textContent.replace('Material: ', ''),
+            price: modalPrice.textContent,
+            desc: modalDesc.textContent,
+            image: modalImg.src,
+            qty: 1
+        };
+
+        let cart = [];
+        try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { cart = []; }
+
+        const idx = cart.findIndex(x => x.id === item.id);
+        if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+        else cart.push(item);
+
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        window.location.href = 'cart.html';
+    });
+}
+
+wireBuyBtns();
+wireModalBuy();
+</script>
+
+    <footer class="collection-foot">
+        &copy; 2026 Violet Quartz Co.
+    </footer>
+
+</body>
+</html>
+

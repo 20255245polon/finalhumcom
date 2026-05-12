@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Special</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="nav-home-link">
+                    <img src="images/logo.png" alt="Logo">
+                    <span class="brand-name">Violet Quartz Co.</span>
+                </a>
+            </div>
+
+            <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+            <li class="dropdown">
+                <a href="collection.html" class="dropbtn">Collections </a>
+
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="ring.html">Rings</a>
+                        </li>
+                        <li>
+                            <a href="necklace.html">Necklaces</a>
+                        </li>
+                        <li>
+                            <a href="earring.html">Earrings</a>
+                        </li>
+                        <li>
+                            <a href="bracelet.html">Bracelets</a>
+                        </li>
+                        <li>
+                            <a href="vault.html" class="active">Vault Special</a>
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                <a href="cart.html" class="cart-link">Cart</a>
+            </li>
+            <li>
+                <a href="about.html">About Us</a>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+
+        </div>
+    </nav>
+
+    <!-- VAULT SECTION -->
+    <section class="vault-section">
+
+        <h1 class="vault-title">Vault Special</h1>
+        <p class="vault-sub">Curated. Rare. Exclusive.</p>
+
+        <div class="vault-grid">
+
+            <!-- ITEM -->
+            <div class="vault-card clickable"
+                data-name="Product 1"
+                data-material="Silver, Amethyst"
+                data-price="₱2,499"
+                data-desc="A rare handcrafted piece with a luminous violet stone.">
+
+                <img src="images/vault1.png" alt="Amethyst Relic">
+
+                <div class="vault-info">
+                    <p class="label">Collection I</p>
+                    <h3>PRODUCT 1</h3>
+                    <p class="price">₱2,499</p>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- ITEM -->
+            <div class="vault-card clickable"
+                data-name="Product 2"
+                data-material="18K Gold Plated"
+                data-price="₱2,999"
+                data-desc="A luxurious gold piece preserved for exclusivity.">
+
+                <img src="images/vault2.png" alt="Golden Archive">
+
+                <div class="vault-info">
+                    <p class="label">Collection II</p>
+                    <h3>PRODUCT 2</h3>
+                    <p class="price">₱2,999</p>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- ITEM -->
+            <div class="vault-card clickable"
+                data-name="Product 3"
+                data-material="Crystal, Stainless Steel"
+                data-price="₱1,999"
+                data-desc="A brilliant crystal piece with refined elegance.">
+
+                <img src="images/vault3.png" alt="Crystal Vault">
+
+                <div class="vault-info">
+                    <p class="label">Collection III</p>
+                    <h3>PRODUCT 3</h3>
+                    <p class="price">₱1,999</p>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="productModal" class="modal">
+        <div class="modal-box">
+            <span class="close">&times;</span>
+
+            <img id="modalImg">
+            <h2 id="modalName"></h2>
+            <p id="modalMaterial"></p>
+            <p id="modalDesc"></p>
+            <p id="modalPrice" class="price"></p>
+
+            <button class="buy-btn">Reserve Now</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+    const modal = document.getElementById("productModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalName = document.getElementById("modalName");
+    const modalMaterial = document.getElementById("modalMaterial");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalPrice = document.getElementById("modalPrice");
+
+    /* OPEN MODAL */
+    document.querySelectorAll(".vault-card").forEach(card => {
+        card.addEventListener("click", function () {
+            modal.classList.add("show");
+
+            modalImg.src = this.querySelector("img").src;
+            modalName.textContent = this.dataset.name;
+            modalMaterial.textContent = "Material: " + this.dataset.material;
+            modalDesc.textContent = this.dataset.desc;
+            modalPrice.textContent = this.dataset.price;
+        });
+    });
+
+    /* CLOSE MODAL */
+    document.querySelector(".close").onclick = () => {
+        modal.classList.remove("show");
+    };
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("show");
+    });
+
+    /* BUY BUTTON */
+const CART_KEY = 'violet_quartz_cart_v1';
+
+function addVaultItemFromCard(card) {
+    const img = card.querySelector('img.clickable');
+    const btn = card.querySelector('.buy-btn');
+    // vault cards use data-* on the .vault-card itself
+    const item = {
+        id: card.dataset.name + '|' + card.dataset.price,
+        name: card.dataset.name,
+        material: card.dataset.material || '',
+        price: card.dataset.price,
+        desc: card.dataset.desc || '',
+        image: card.querySelector('img')?.src || '',
+        qty: 1
+    };
+
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { cart = []; }
+
+    const idx = cart.findIndex(x => x.id === item.id);
+    if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+    else cart.push(item);
+
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+document.querySelectorAll('.vault-card').forEach(card => {
+    const btn = card.querySelector('.buy-btn');
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        addVaultItemFromCard(card);
+        window.location.href = 'cart.html';
+    });
+});
+
+// Modal reserve
+const modalReserveBtn = document.querySelector('#productModal .buy-btn');
+if (modalReserveBtn) {
+    modalReserveBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = modalName.textContent + '|' + modalPrice.textContent;
+        const item = {
+            id,
+            name: modalName.textContent,
+            material: modalMaterial.textContent.replace('Material: ', ''),
+            price: modalPrice.textContent,
+            desc: modalDesc.textContent,
+            image: modalImg.src,
+            qty: 1
+        };
+
+        let cart = [];
+        try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { cart = []; }
+
+        const idx = cart.findIndex(x => x.id === item.id);
+        if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+        else cart.push(item);
+
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        window.location.href = 'cart.html';
+    });
+}
+    </script>
+
+    <footer class="collection-foot site-footer">
+        &copy; 2026 Violet Quartz Co.
+    </footer>
+</body>
+</html>

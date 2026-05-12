@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ring Section</title>
+</head>
+<body>
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-home-link">
+                <img src="images/logo.png" alt="Logo">
+                <span class="brand-name">Violet Quartz Co. </span>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+           
+            <li class="dropdown">
+                <a href="collection.html" class="dropbtn">Collections </a>
+
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="ring.html" class="active">Rings</a>
+                        </li>
+                        <li>
+                            <a href="necklace.html">Necklaces</a>
+                        </li>
+                        <li>
+                            <a href="earring.html">Earrings</a>
+                        </li>
+                        <li>
+                            <a href="bracelet.html">Bracelets</a>
+                        </li>
+                        <li>
+                            <a href="vault.html">Vault Special</a>
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                <a href="cart.html" class="cart-link">Cart</a>
+            </li>
+            <li>
+                <a href="about.html">About Us</a>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+
+    </div>
+    </nav>
+
+    <section class="product-section">
+    <h2 class="section-title">Our Rings Collection</h2>
+
+    <div class="product-container">
+
+        <!-- PRODUCT -->
+        <div class="product-card">
+            <img src="images/ring1.png" class="clickable"
+                data-name="Amethyst Glow Ring"
+                data-material="Silver, Amethyst Stone"
+                data-price="₱500"
+                data-desc="Elegant handcrafted ring with a natural violet gemstone.">
+
+            <h3>Amethyst Glow Ring</h3>
+            <p class="material">Material: Silver, Amethyst Stone</p>
+            <p class="desc">Elegant handcrafted ring with a natural violet gemstone.</p>
+            <p class="price">₱500</p>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/ring2.png" class="clickable"
+                data-name="Golden Aura Ring"
+                data-material="18K Gold Plated"
+                data-price="₱899"
+                data-desc="Minimalist gold ring perfect for everyday wear.">
+
+            <h3>Golden Aura Ring</h3>
+            <p class="material">Material: 18K Gold Plated</p>
+            <p class="desc">Minimalist gold ring perfect for everyday wear.</p>
+            <p class="price">₱899</p>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/ring3.png" class="clickable"
+                data-name="Crystal Shine Ring"
+                data-material="Stainless Steel, Crystal"
+                data-price="₱299"
+                data-desc="Sparkling crystal centerpiece with durable finish.">
+
+            <h3>Crystal Shine Ring</h3>
+            <p class="material">Material: Stainless Steel, Crystal</p>
+            <p class="desc">Sparkling crystal centerpiece with durable finish.</p>
+            <p class="price">₱299</p>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/ring4.png" class="clickable"
+                data-name="Rose Charm Ring"
+                data-material="Rose Gold Plated"
+                data-price="₱599"
+                data-desc="Soft pink tone ring with a romantic touch.">
+
+            <h3>Rose Charm Ring</h3>
+            <p class="material">Material: Rose Gold Plated</p>
+            <p class="desc">Soft pink tone ring with a romantic touch.</p>
+            <p class="price">₱599</p>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/ring5.png" class="clickable"
+                data-name="Diamond Luxe Ring"
+                data-material="White Gold, Zircon Diamond"
+                data-price="₱499"
+                data-desc="Luxury-inspired ring with brilliant shine.">
+
+            <h3>Diamond Luxe Ring</h3>
+            <p class="material">Material: White Gold, Zircon Diamond</p>
+            <p class="desc">Luxury-inspired ring with brilliant shine.</p>
+            <p class="price">₱499</p>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/ring6.png" class="clickable"
+                data-name="Vintage Violet Ring"
+                data-material="Antique Silver"
+                data-price="₱799"
+                data-desc="Classic vintage design with intricate details.">
+
+            <h3>Vintage Ring</h3>
+            <p class="material">Material: Antique Silver</p>
+            <p class="desc">Classic vintage design with intricate details.</p>
+            <p class="price">₱799</p>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL -->
+<div id="productModal" class="modal">
+    <div class="modal-box">
+        <span class="close">&times;</span>
+
+        <img id="modalImg">
+        <h2 id="modalName"></h2>
+        <p id="modalMaterial"></p>
+        <p id="modalDesc"></p>
+        <p id="modalPrice" class="price"></p>
+
+        <button class="buy-btn">Buy Now</button>
+    </div>
+</div>
+
+<script>
+const modal = document.getElementById("productModal");
+const modalImg = document.getElementById("modalImg");
+const modalName = document.getElementById("modalName");
+const modalMaterial = document.getElementById("modalMaterial");
+const modalDesc = document.getElementById("modalDesc");
+const modalPrice = document.getElementById("modalPrice");
+
+document.querySelectorAll(".clickable").forEach(img => {
+    img.addEventListener("click", function() {
+        modal.classList.add("show");
+
+        modalImg.src = this.src;
+        modalName.textContent = this.dataset.name;
+        modalMaterial.textContent = "Material: " + this.dataset.material;
+        modalDesc.textContent = this.dataset.desc;
+        modalPrice.textContent = this.dataset.price;
+    });
+});
+
+document.querySelector(".close").onclick = () => {
+    modal.classList.remove("show");
+};
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.remove("show");
+});
+
+const CART_KEY = 'violet_quartz_cart_v1';
+
+function addToCartFromCard(card) {
+    const name = card.querySelector('[data-name]')?.dataset?.name;
+    const img = card.querySelector('img.clickable');
+    if (!img) return;
+
+    const item = {
+        id: img.dataset.name + '|' + img.dataset.price,
+        name: img.dataset.name,
+        material: img.dataset.material || '',
+        price: img.dataset.price,
+        desc: img.dataset.desc || '',
+        image: img.src,
+        qty: 1
+    };
+
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { cart = []; }
+
+    const idx = cart.findIndex(x => x.id === item.id);
+    if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+    else cart.push(item);
+
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function wireBuyBtns() {
+    document.querySelectorAll('.product-card').forEach(card => {
+        const btn = card.querySelector('.buy-btn');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            addToCartFromCard(card);
+            window.location.href = 'cart.html';
+        });
+    });
+}
+
+// Ring modal buy
+function wireModalBuy() {
+    const modalBuyBtn = document.querySelector('#productModal .buy-btn');
+    if (!modalBuyBtn) return;
+
+    modalBuyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = modalName.textContent + '|' + modalPrice.textContent;
+        const item = {
+            id,
+            name: modalName.textContent,
+            material: modalMaterial.textContent.replace('Material: ', ''),
+            price: modalPrice.textContent,
+            desc: modalDesc.textContent,
+            image: modalImg.src,
+            qty: 1
+        };
+
+        let cart = [];
+        try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { cart = []; }
+
+        const idx = cart.findIndex(x => x.id === item.id);
+        if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+        else cart.push(item);
+
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        window.location.href = 'cart.html';
+    });
+}
+
+wireBuyBtns();
+wireModalBuy();
+</script>
+
+    <footer class="collection-foot">
+        &copy; 2026 Violet Quartz Co.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earring Section</title>
+</head>
+<body>
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-home-link">
+                <img src="images/logo.png" alt="Logo">
+                <span class="brand-name">Violet Quartz Co. </span>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+           
+            <li class="dropdown">
+                <a href="collection.html" class="dropbtn">Collections </a>
+
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="ring.html">Rings</a>
+                        </li>
+                        <li>
+                            <a href="necklace.html">Necklaces</a>
+                        </li>
+                        <li>
+                            <a href="earring.html" class="active">Earrings</a>
+                        </li>
+                        <li>
+                            <a href="bracelet.html">Bracelets</a>
+                        </li>
+                        <li>
+                            <a href="vault.html">Vault Special</a>
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                <a href="cart.html" class="cart-link">Cart</a>
+            </li>
+            <li>
+                <a href="about.html">About Us</a>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+
+    </div>
+    </nav>
+
+ 
+    <section class="product-section">
+        <h2 class="section-title">Our Earrings Collection</h2>
+
+        <div class="product-container">
+
+            <!-- PRODUCT 1 -->
+            <div class="product-card">
+                <img src="images/earring1.png" class="clickable"
+                    data-name="Square Bolt Studs"
+                    data-material="Titanium, Hematite"
+                    data-price="₱1,800"
+                    data-desc="Sharp, geometric square-cut stones in a low-profile setting.">
+
+                <h3>Square Bolt Studs</h3>
+                <p class="material">Material: Titanium, Hematite</p>
+                <p class="desc">Geometric low-profile setting.</p>
+                <p class="price">₱1,800</p>
+                <button class="buy-btn add-to-cart">Add to Cart</button>
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card">
+                <img src="images/earring2.png" class="clickable"
+                    data-name="Void Huggies"
+                    data-material="Matte Black Steel, Lapis Lazuli Dust"
+                    data-price="₱1,500"
+                    data-desc="Small, thick hoops with an internal 'channel' of lapis lazuli dust.">
+
+                <h3>Void Huggies</h3>
+                <p class="material">Material: Matte Black Steel</p>
+                <p class="desc">Internal lapis lazuli channel.</p>
+                <p class="price">₱1,500</p>
+                <button class="buy-btn add-to-cart">Add to Cart</button>
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="product-card">
+                <img src="images/earring3.png" class="clickable"
+                    data-name="Apex Spikes"
+                    data-material="14k White Gold, Raw Quartz"
+                    data-price="₱1,200"
+                    data-desc="Single-point quartz crystal earrings that hang vertically.">
+
+                <h3>Apex Spikes</h3>
+                <p class="material">Material: 14k White Gold</p>
+                <p class="desc">Vertical raw quartz crystal.</p>
+                <p class="price">₱1,200</p>
+                <button class="buy-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <!-- PRODUCT 4 -->
+
+            <div class="product-card">
+                <img src="images/earring4.png" class="clickable"
+                    data-name="Fragment Studs"
+                    data-material="Oxidized Silver, Raw Sapphire"
+                    data-price="₱1,800"
+                    data-desc="Uneven, 'broken' stone fragments for a rugged, natural look.">
+
+                <h3>Fragment Studs</h3>
+                <p class="material">Material: Oxidized Silver</p>
+                <p class="desc">Rugged raw sapphire fragments.</p>
+                <p class="price">₱1,800</p>
+                <button class="buy-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <!-- PRODUCT 5 -->
+            <div class="product-card">
+                <img src="images/earring5.png" class="clickable"
+
+                    data-name="Eclipse Gauges"
+                    data-material="Surgical Steel, Labradorite"
+                    data-price="₱1,400"
+                    data-desc="Faux-gauge style circular discs with a blue center.">
+
+                <h3>Eclipse Gauges</h3>
+
+                <p class="material">Material: Surgical Steel</p>
+                <p class="desc">Faux-gauge labradorite discs.</p>
+                <p class="price">₱1,400</p>
+                <button class="buy-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <!-- PRODUCT 6 -->
+            <div class="product-card">
+
+                <img src="images/earring6.png" class="clickable"
+                    data-name="Vector Drops"
+                    data-material="Brushed Gold, Iolite"
+                    data-price="₱1,500"
+                    data-desc="Thin, minimalist bars featuring a single floating stone.">
+
+                <h3>Vector Drops</h3>
+                <p class="material">Material: Brushed Gold, Iolite</p>
+                <p class="desc">Minimalist bar with floating stone.</p>
+                <p class="price">₱1,500</p>
+                <button class="buy-btn add-to-cart">Add to Cart</button>
+
+            </div>
+
+        </div>
+    </section>
+
+
+<!-- MODAL -->
+<div id="productModal" class="modal">
+    <div class="modal-box">
+        <span class="close">&times;</span>
+
+        <img id="modalImg">
+        <h2 id="modalName"></h2>
+        <p id="modalMaterial"></p>
+        <p id="modalDesc"></p>
+        <p id="modalPrice" class="price"></p>
+
+        <button class="buy-btn add-to-cart">Add to Cart</button>
+
+    </div>
+</div>
+
+<script>
+const modal = document.getElementById("productModal");
+const modalImg = document.getElementById("modalImg");
+const modalName = document.getElementById("modalName");
+const modalMaterial = document.getElementById("modalMaterial");
+const modalDesc = document.getElementById("modalDesc");
+const modalPrice = document.getElementById("modalPrice");
+
+document.querySelectorAll(".clickable").forEach(img => {
+    img.addEventListener("click", function() {
+        modal.classList.add("show");
+
+        modalImg.src = this.src;
+        modalName.textContent = this.dataset.name;
+        modalMaterial.textContent = "Material: " + this.dataset.material;
+        modalDesc.textContent = this.dataset.desc;
+        modalPrice.textContent = this.dataset.price;
+    });
+});
+
+document.querySelector(".close").onclick = () => {
+    modal.classList.remove("show");
+};
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.remove("show");
+});
+
+function addToCartFromDataset(el) {
+    const name = el.dataset.name;
+    const material = el.dataset.material || '';
+    const price = el.dataset.price;
+    const desc = el.dataset.desc || '';
+    const image = el.dataset.image || '';
+
+    // image isn't directly on the button, so try find closest card image
+    const card = el.closest('.product-card');
+    const img = card ? card.querySelector('img.clickable') : null;
+
+    const item = {
+        id: name + '|' + price,
+        name,
+        material,
+        price,
+        desc,
+        image: img ? img.src : ''
+    };
+
+    const CART_KEY = 'violet_quartz_cart_v1';
+    let cart = [];
+    try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    } catch {
+        cart = [];
+    }
+
+    const idx = cart.findIndex(x => x.id === item.id);
+    if (idx >= 0) {
+        cart[idx].qty = (cart[idx].qty || 1) + 1;
+    } else {
+        item.qty = 1;
+        cart.push(item);
+    }
+
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function wireCartButtons() {
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            addToCartFromDataset(btn);
+            window.location.href = 'cart.html';
+        });
+    });
+}
+
+// Current modal button (add-to-cart)
+const modalAddBtn = document.querySelector('#productModal .buy-btn');
+if (modalAddBtn) {
+    modalAddBtn.id = 'modal-add-to-cart';
+}
+
+// Replace modal button label & behavior
+if (modalAddBtn) {
+    modalAddBtn.textContent = 'Add to Cart';
+    modalAddBtn.classList.add('add-to-cart');
+    modalAddBtn.addEventListener('click', () => {
+        const item = {
+            id: modalName.textContent + '|' + modalPrice.textContent,
+            name: modalName.textContent,
+            material: modalMaterial.textContent.replace('Material: ', ''),
+            price: modalPrice.textContent,
+            desc: modalDesc.textContent,
+            image: modalImg.src,
+            qty: 1
+        };
+
+        const CART_KEY = 'violet_quartz_cart_v1';
+        let cart = [];
+        try {
+            cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        } catch {
+            cart = [];
+        }
+
+        const idx = cart.findIndex(x => x.id === item.id);
+        if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+        else cart.push(item);
+
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        window.location.href = 'cart.html';
+    });
+}
+
+wireCartButtons();
+</script>
+
+
+    <footer class="collection-foot">
+        &copy; 2026 Violet Quartz Co.
+    </footer>
+
+</body>
+</html>

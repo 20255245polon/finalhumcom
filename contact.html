@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+</head>
+<body>
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-home-link">
+                <img src="images/logo.png" alt="Logo">
+                <span class="brand-name">Violet Quartz Co. </span>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+           
+            <li class="dropdown">
+                <a href="collection.html" class="dropbtn">Collections </a>
+
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="ring.html">Rings</a>
+                        </li>
+                        <li>
+                            <a href="necklace.html">Necklaces</a>
+                        </li>
+                        <li>
+                            <a href="earring.html">Earrings</a>
+                        </li>
+                        <li>
+                            <a href="bracelet.html">Bracelets</a>
+                        </li>
+                        <li>
+                            <a href="vault.html">Vault Special</a>
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                <a href="cart.html" class="cart-link">Cart</a>
+            </li>
+            <li>
+                <a href="about.html">About Us</a>
+            </li>
+            <li>
+                <a href="contact.html" class="active">Contacts</a>
+            </li>
+        </ul>
+
+    </div>
+    </nav>
+
+<section class="contact-hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you. Let’s connect.</p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Email: violetquartz@email.com</p>
+            <p>Phone: +63 969 207 6363</p>
+            <p>Location: Baguio, Philippines</p>
+
+            <div class="social-links">
+                <h3>Follow Us</h3>
+
+                <a href="https://www.facebook.com" target="_blank" class="social fb">
+                    Facebook
+                </a>
+
+                <a href="https://www.instagram.com" target="_blank" class="social ig">
+                    Instagram
+                </a>
+
+                <a href="https://www.tiktok.com" target="_blank" class="social tt">
+                    TikTok
+                </a>
+            </div>
+        </div>
+
+        <form class="contact-form">
+            <h2>We’d Love to Hear From You</h2>
+
+            <div class="input-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+
+            <div class="input-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="input-group">
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+            </div>
+
+            <p id="success-message" style="display:none; color: rgb(164, 0, 179); margin-bottom: 10px;">
+                Your message has been sent successfully!
+            </p>
+
+            <button type="submit" class="cta-btn">Send Message</button>
+        </form>
+
+    </div>
+</section>
+
+<footer class="footer contact-foot site-footer">
+        &copy; 2026 Violet Quartz Co.
+    </footer>
+
+    <script>
+        const form = document.querySelector(".contact-form");
+        const successMessage = document.getElementById("success-message");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // stop page refresh
+
+            // show success message
+            successMessage.style.display = "block";
+
+            // optional: clear form fields
+            form.reset();
+
+            // optional: hide message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = "none";
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

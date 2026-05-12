@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" class="nav-home-link">
+          <img src="images/logo.png" alt="Logo">
+          <span class="brand-name">Violet Quartz Co. </span>
+        </a>
+      </div>
+
+      <ul class="nav-links">
+            <li><a href="index.html" >Home</a></li>
+           
+            <li class="dropdown">
+                <a href="collection.html" class="dropbtn">Collections </a>
+
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="ring.html">Rings</a>
+                        </li>
+                        <li>
+                            <a href="necklace.html">Necklaces</a>
+                        </li>
+                        <li>
+                            <a href="earring.html">Earrings</a>
+                        </li>
+                        <li>
+                            <a href="bracelet.html">Bracelets</a>
+                        </li>
+                        <li>
+                            <a href="vault.html">Vault Special</a>
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                <a href="cart.html" class="cart-link, active">Cart</a>
+            </li>
+            <li>
+                <a href="about.html">About Us</a>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+
+    </div>
+  </nav>
+
+  <main class="cart-page">
+    <section class="cart-section">
+      <h2 class="section-title">Your Cart</h2>
+      <p class="cart-sub">Add items from any product page, then review and checkout here.</p>
+
+      <div class="cart-table-wrapper">
+        <table class="cart-table" aria-label="Cart items">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th style="width: 170px;">Qty</th>
+              <th>Subtotal</th>
+              <th style="width: 120px;"><span class="sr-only">Actions</span>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cart-tbody">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cart-summary">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <strong id="cart-total">₱0</strong>
+        </div>
+
+        <div class="cart-actions">
+          <button class="cta-btn" id="checkout-btn">Checkout</button>
+          <button class="cart-clear-btn" id="clear-btn">Clear cart</button>
+        </div>
+
+        <p class="cart-empty" id="cart-empty">Your cart is empty. Go back to collections and add something rare.</p>
+      </div>
+    </section>
+  </main>
+
+<footer class="index-foot site-footer">
+    &copy; 2026 Violet Quartz Co.
+  </footer>
+
+  <script>
+    const CART_KEY = 'violet_quartz_cart_v1';
+
+    function parsePriceToNumber(priceStr) {
+      // Supports inputs like "£1,800" or "$1,800" or "1200"
+      if (!priceStr) return 0;
+      const cleaned = String(priceStr).replace(/[^0-9.]/g, '');
+      const n = Number(cleaned);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function formatMoneyFromNumber(n) {
+      // Keep it simple for static UI
+      try {
+return new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(n);
+      } catch {
+        return '£' + n.toFixed(2);
+      }
+    }
+
+    function loadCart() {
+      try {
+        const raw = localStorage.getItem(CART_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      const cart = loadCart();
+      const tbody = document.getElementById('cart-tbody');
+      const totalEl = document.getElementById('cart-total');
+      const emptyEl = document.getElementById('cart-empty');
+
+      tbody.innerHTML = '';
+
+      if (!cart.length) {
+        emptyEl.style.display = 'block';
+        totalEl.textContent = formatMoneyFromNumber(0);
+        return;
+      }
+
+      emptyEl.style.display = 'none';
+
+      let total = 0;
+      for (const item of cart) {
+        const qty = item.qty || 1;
+        const priceNum = parsePriceToNumber(item.price);
+        const subtotal = priceNum * qty;
+        total += subtotal;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <div class="cart-item-cell">
+              ${item.image ? `<img class="cart-item-thumb" src="${item.image}" alt="${item.name}">` : ''}
+              <div>
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-meta">${item.material ? item.material : ''}</div>
+              </div>
+            </div>
+          </td>
+          <td>${item.price}</td>
+          <td>
+            <div class="cart-qty">
+              <button class="qty-btn" data-action="dec" data-id="${item.id}">-</button>
+              <span class="qty-value">${qty}</span>
+              <button class="qty-btn" data-action="inc" data-id="${item.id}">+</button>
+            </div>
+          </td>
+          <td>${formatMoneyFromNumber(subtotal)}</td>
+          <td>
+            <button class="remove-btn" data-id="${item.id}">Remove</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      }
+
+      totalEl.textContent = formatMoneyFromNumber(total);
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target;
+      if (!btn) return;
+
+      if (btn.classList.contains('qty-btn')) {
+        const id = btn.getAttribute('data-id');
+        const action = btn.getAttribute('data-action');
+        const cart = loadCart();
+        const idx = cart.findIndex(x => x.id === id);
+        if (idx === -1) return;
+
+        if (action === 'inc') cart[idx].qty = (cart[idx].qty || 1) + 1;
+        if (action === 'dec') cart[idx].qty = Math.max(1, (cart[idx].qty || 1) - 1);
+
+        saveCart(cart);
+        renderCart();
+      }
+
+      if (btn.classList.contains('remove-btn')) {
+        const id = btn.getAttribute('data-id');
+        const cart = loadCart().filter(x => x.id !== id);
+        saveCart(cart);
+        renderCart();
+      }
+
+      if (btn.id === 'clear-btn') {
+        localStorage.removeItem(CART_KEY);
+        renderCart();
+      }
+    });
+
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      const cart = loadCart();
+      if (!cart.length) {
+        alert('Cart is empty. Add items before checkout.');
+        return;
+      }
+      // Fake checkout
+      alert(' Checkout complete! ');
+      localStorage.removeItem(CART_KEY);
+      renderCart();
+    });
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      localStorage.removeItem(CART_KEY);
+      renderCart();
+    });
+
+    renderCart();
+  </script>
+</body>
+</html>
+
